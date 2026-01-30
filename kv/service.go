@@ -51,7 +51,7 @@ func (s *Service) Start() {
 	}
 
 	s.raftServer = raft.NewServer(s.id, peerIds, storage, s.readyChan, s.commitChan)
-	s.raftServer.Serve(PeerMap[s.id]) // Start RPC listener
+	s.raftServer.Serve(PeerMap[s.id])
 	s.connectPeers(peerIds)
 
 	go s.processCommits()
